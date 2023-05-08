@@ -45,6 +45,19 @@ const useStyles = createStyles((theme) => ({
             cursor: 'pointer',
         },
     },
+    labelInnerSelected:{
+        backgroundColor: '#0c2033',
+        padding: theme.spacing.md,
+        borderRadius: theme.radius.sm,
+        color: '#fff',
+        cursor: 'pointer',
+        display: 'inline-block',
+        outline: '2px solid #fab817',
+        '&:hover': {
+            outline:'2px solid #fab817',
+            cursor: 'pointer',
+        },
+    },
     customRadio:{
         '&:input[type="radio"]:checked + label':{
                 outline: '2px solid yellow',
@@ -106,7 +119,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
                                     label={value} 
                                     onClick={() => handleRadioClick(value)}
                                     className={classes.customRadio}
-                                    classNames={{inner: classes.hiddenRadio, label: classes.labelInner}}
+                                    classNames={{inner: classes.hiddenRadio, label: form.values.options === `${value}` ? classes.labelInnerSelected :  classes.labelInner}}
                                     // sx={{outline: form.values.options === `${value}` ? '2px solid #fab817' : 'none'}}
                                 />
                             </div>
