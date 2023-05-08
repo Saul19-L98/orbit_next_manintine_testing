@@ -5,20 +5,18 @@ import {ImTwitter} from 'react-icons/im'
 import {FaFacebookF,FaLinkedinIn} from "react-icons/fa";
 
 const useStyles = createStyles((themes)=>({
-    carrer:{
-        textAlign:'center',
-    },
     gridContainer:{
         color:'#fff',
     },
     links:{
-        color:'#fff',
+        color:'#fab817',
         textDecoration: 'none',
         '&:hover':{
-            color:'#fab817',
+            textDecoration: 'underline',
         },
     },
     linksPolicy:{
+        paddingTop: '1rem',
         color:'#fff',
         textDecoration: 'none',
         '&:hover':{
@@ -35,6 +33,9 @@ const useStyles = createStyles((themes)=>({
     iconsSocial:{
         color: '#fff',
         fontSize: '1.5rem',
+    },
+    title:{
+        marginTop: '0'
     }
 }));
 
@@ -42,7 +43,7 @@ const Footer = () => {
     const {classes} = useStyles();
     return(
         <Container bg={{base:'#0c2033'}} maw={{base:'100%'}}  p={{base:'3rem'}}>
-            <Grid mx={{base:'auto'}} justify='center' gutter={30} className={classes.gridContainer}>
+            <Grid justify='center' gutter={30} className={classes.gridContainer}>
                 <Grid.Col sm={12} md={3} order={1}>
                     <Flex direction='column'>
                         <Image 
@@ -62,7 +63,7 @@ const Footer = () => {
                 </Grid.Col>
                 <Grid.Col sm={12} md={3} order={3}>
                     <Flex direction='column'>
-                        <h3>Contact Us</h3>
+                        <h3 className={classes.title}>Contact Us</h3>
                         <p><a className={classes.icons}><AiOutlineMail /></a> info@cmimc.ca</p>
                         <p><a className={classes.icons}><AiOutlinePhone /></a> 1 (855) 234-9917</p>
                         <Flex gap={10}>
@@ -73,7 +74,7 @@ const Footer = () => {
                     </Flex>
                 </Grid.Col>
             </Grid>
-            <Grid mx={{base:'auto'}} justify='center' gutter={30} className={classes.gridContainer}>
+            <Grid mx={{base:'auto'}} justify='center' gutter={2} className={classes.gridContainer}>
                 <Grid.Col sm={12} md={6} order={1}>
                     <p>© 2023 Canadian Mortgages Inc . All Rights Reserved. Web Design by <span><a href="https://orbitweb.net/es" className={classes.linksOrbit}>OrbitWeb Inc.</a></span></p>
                 </Grid.Col>

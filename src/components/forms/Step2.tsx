@@ -24,6 +24,7 @@ const useStyles = createStyles(()=>({
         },
     },
     transparentInput:{
+        color:'#fff',
         background: 'transparent',
         border: 'none',
         borderBottom: '1px solid #fff',
