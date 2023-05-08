@@ -6,8 +6,6 @@ type StepStore = {
     setActive: (step: number) => void;
     setActiveFromStepChange: (step: number) => void;
     setExperience : (options: string) => void;
-    // nextStep: () => void;
-    // prevStep: () => void;
 };
 
 export const useStepStore = create<StepStore>((set) => ({
@@ -17,8 +15,4 @@ export const useStepStore = create<StepStore>((set) => ({
     setActiveFromStepChange: (step: number) =>
         set((state) => ({ active: step - 1 })),
     setExperience: (experience: string) => set((state) => ({ experience: experience })),
-    // nextStep: () =>
-    //     set((state) => ({ active: state.active < 2 ? state.active + 1 : state.active })),
-    // prevStep: () =>
-    //     set((state) => ({ active: state.active > 0 ? state.active - 1 : state.active })),
 }));

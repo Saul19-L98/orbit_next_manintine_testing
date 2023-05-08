@@ -10,22 +10,34 @@ interface Step1Props{
 const useStyles = createStyles((theme) => ({
     group: {
         display: 'flex',
-        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    formFlex:{
+        display: 'flex',
+        justifyContent: 'center',
     },
     nextButton: {
-        backgroundColor: theme.colors.yellow[6],
+        fontSize: '1.2rem',
+        backgroundColor: '#fab817',
         '&:hover': {
-            backgroundColor: theme.colors.yellow[7],
+            backgroundColor: '#fab817',
         },
     },
     hiddenRadio: {
         display: 'none',
     },
-    label: {
-        backgroundColor: theme.colors.blue[6],
+
+    labelTitle: {
+        fontSize: '1.87rem',
+        fontWeight: 700,
+        color: '#fff',
+        textAlign: 'center'
+    },
+    labelInner:{
+        backgroundColor: '#0c2033',
         padding: theme.spacing.md,
         borderRadius: theme.radius.sm,
-        color: theme.white,
+        color: '#fff',
         cursor: 'pointer',
         display: 'inline-block',
         '&:hover': {
@@ -33,6 +45,16 @@ const useStyles = createStyles((theme) => ({
             cursor: 'pointer',
         },
     },
+    customRadio:{
+        '&:input[type="radio"]:checked + label':{
+                outline: '2px solid yellow',
+        }
+    },
+    error:{
+        textAlign: 'center',
+        fontSize: '1.2rem',
+        paddingTop: '1rem'
+    }
 }));
 
 const schema = z.object({
@@ -47,7 +69,7 @@ const Step1 = ({ nextStep }: Step1Props) => {
     const form = useForm({
         validate: zodResolver(schema),
         initialValues: {
-            options: 'option1',
+            options: '',
         }
     });
 
@@ -73,18 +95,21 @@ const Step1 = ({ nextStep }: Step1Props) => {
                 <Radio.Group
                     name="options"
                     label="What is your experience with Mortgage Investing"
+                    classNames={{label: classes.labelTitle,error:classes.error}}
                     {...form.getInputProps('options')}>
-                    <Flex mt={{base:'xl',400:'md'}} bg={{base:'grape',md:'indigo'}} direction={{base:'column',md:'row'}} gap={14}>
+                    <Flex mt={{base:'xl',400:'md'}} justify={{base:'center'}} direction={{base:'column',md:'row'}}  gap={14}>
                         {optionLabels.map(({value}) => (
-                            <Radio 
-                                key={value}
-                                value={value} 
-                                label={value} 
-                                onClick={() => handleRadioClick(value)}
-                                className={`${classes.hiddenRadio}, ${classes.label}`}
-                                classNames={{inner: classes.hiddenRadio}}
-                                sx={{outline: form.values.options === `${value}` ? '2px solid #fab817' : 'none'}}
-                            />
+                            <div key={value} className={classes.group}>
+                                <Radio
+                                    w={{base:'18.75rem'}} 
+                                    value={value} 
+                                    label={value} 
+                                    onClick={() => handleRadioClick(value)}
+                                    className={classes.customRadio}
+                                    classNames={{inner: classes.hiddenRadio, label: classes.labelInner}}
+                                    // sx={{outline: form.values.options === `${value}` ? '2px solid #fab817' : 'none'}}
+                                />
+                            </div>
                         ))}
                     </Flex>
                 </Radio.Group>
