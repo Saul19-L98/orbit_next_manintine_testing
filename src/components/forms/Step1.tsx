@@ -120,7 +120,6 @@ const Step1 = ({ nextStep }: Step1Props) => {
                                     onClick={() => handleRadioClick(value)}
                                     className={classes.customRadio}
                                     classNames={{inner: classes.hiddenRadio, label: form.values.options === `${value}` ? classes.labelInnerSelected :  classes.labelInner}}
-                                    // sx={{outline: form.values.options === `${value}` ? '2px solid #fab817' : 'none'}}
                                 />
                             </div>
                         ))}
